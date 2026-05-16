@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Física em Degraus</title>
+
+
+    <script th:inline="none">
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$']]
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .correta {
+            color: green;
+            font-weight: bold;
+        }
+
+        .errada {
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Física em Degraus</h1>
+
+
+
+    <div th:if="${questao != null}">
+
+        <h2>
+            Nível <span th:text="${questao.nivel}"></span>
+        </h2>
+
+        <h3>
+            Acertos neste nível:
+            <span th:text="${acertosNivel}"></span> / 5
+        </h3>
+
+        <p><b th:utext="${questao.enunciado}"></b></p>
+
+        <form th:action="@{/responder}" method="post">
+            <input type="hidden" name="questaoId" th:value="${questao.id}">
+            <input type="hidden" name="nomeAluno" th:value="${nomeAluno}">
+
+            <label th:classappend="${acertou != null} ? 
+                (${questao.respostaCorreta == 'A'} ? 'correta' : 
+                (${resposta == 'A'} ? 'errada' : '')) 
+                : ''">
+                <input type="radio" name="resposta" value="A" th:disabled="${acertou != null}">
+                A) <span th:utext="${questao.alternativaA}"></span>
+            </label><br>
+
+            <label th:classappend="${acertou != null} ? 
+                (${questao.respostaCorreta == 'B'} ? 'correta' : 
+                (${resposta == 'B'} ? 'errada' : '')) 
+                : ''">
+                <input type="radio" name="resposta" value="B" th:disabled="${acertou != null}">
+                B) <span th:utext="${questao.alternativaB}"></span>
+            </label><br>
+
+            <label th:classappend="${acertou != null} ? 
+                (${questao.respostaCorreta == 'C'} ? 'correta' : 
+                (${resposta == 'C'} ? 'errada' : '')) 
+                : ''">
+                <input type="radio" name="resposta" value="C" th:disabled="${acertou != null}">
+                C) <span th:utext="${questao.alternativaC}"></span>
+            </label><br>
+
+            <label th:classappend="${acertou != null} ? 
+                (${questao.respostaCorreta == 'D'} ? 'correta' : 
+                (${resposta == 'D'} ? 'errada' : '')) 
+                : ''">
+                <input type="radio" name="resposta" value="D" th:disabled="${acertou != null}">
+                D) <span th:utext="${questao.alternativaD}"></span>
+            </label><br>
+
+            <label th:classappend="${acertou != null} ? 
+                (${questao.respostaCorreta == 'E'} ? 'correta' : 
+                (${resposta == 'E'} ? 'errada' : '')) 
+                : ''">
+                <input type="radio" name="resposta" value="E" th:disabled="${acertou != null}">
+                E) <span th:utext="${questao.alternativaE}"></span>
+            </label>
+            <br>
+            <button type="submit" th:if="${acertou == null}">
+                ENVIAR
+            </button>
+        </form>
+
+        <div th:if="${acertou != null}">
+            <h2 th:text="${acertou} ? '✅ Acertou!' : '❌ Errou!'"></h2>
+        </div>
+
+        <div th:if="${acertou != null}">
+            <form th:action="@{/proxima}" method="get">
+                <input type="hidden" name="nivel" th:value="${questao.nivel}">
+                <input type="hidden" name="nomeAluno" th:value="${nomeAluno}">
+                <button type="submit">Próxima questão</button>
+            </form>
+        </div>
+
+    </div>
+    <div th:if="${mensagem != null}">
+        <h2 th:text="${mensagem}"></h2>
+
+        <form th:action="@{/}" method="get">
+            <button type="submit">
+                🔄 Reiniciar
+            </button>
+        </form>
+    </div>
+
+    <div th:if="${acertou != null and questao != null}"></div>
+
+    <div th:if="${acertou != null and questao != null}">
+        <h3>📘 Resolução:</h3>
+        <p th:utext="${questao.resolucaoComentada}"></p>
+    </div>
+
+    <!--<div th:if="${taxaMecanica != null}">
+        <h2>Taxa de acerto em Mecânica:
+            <span th:text="${#numbers.formatDecimal(taxaMecanica, 1, 2)}"></span>%
+        </h2>
+    </div> -->
+
+    <script>
+        MathJax.typeset();
+    </script>
+</body>
+
+</html>
