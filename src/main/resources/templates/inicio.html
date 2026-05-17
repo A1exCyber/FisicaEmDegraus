@@ -1,6 +1,35 @@
-<h1>Física em Degraus</h1>
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<form action="/iniciar" method="post">
-    <input type="text" name="nomeAluno" placeholder="Digite seu nome" required>
-    <button type="submit">Começar</button>
-</form>
+    <title>Física em Degraus</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Física em Degraus</h1>
+
+    <form action="/iniciar" method="post">
+
+        <input 
+            type="text"
+            name="nomeAluno"
+            placeholder="Digite seu nome"
+            required
+        >
+
+        <button type="submit">
+            Começar
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
