@@ -5,159 +5,398 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #0f172a;
-    color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+
+    background:
+        radial-gradient(circle at top, #0f3b8a33 0%, transparent 35%),
+        linear-gradient(to bottom, #020617, #071226 40%, #0f172a);
+
+    color: #f8fafc;
+
     min-height: 100vh;
-    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 40px 20px;
 }
 
-/* Container principal */
+/* =========================================
+   CONTAINER
+========================================= */
+
 .container {
-    max-width: 900px;
     width: 100%;
-    margin: auto;
-    background-color: #1e293b;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    max-width: 1450px;
+
+    background: rgba(15, 23, 42, 0.75);
+
+    backdrop-filter: blur(6px);
+
+    border: 1px solid rgba(59,130,246,0.15);
+
+    border-radius: 30px;
+
+    padding: 42px;
+
+    box-shadow:
+        0 0 80px rgba(37,99,235,0.12),
+        0 25px 60px rgba(0,0,0,0.55);
 }
 
-/* Título */
+/* =========================================
+   TÍTULO
+========================================= */
+
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    font-size: 2rem;
-    color: #f8fafc;
+
+    font-size: 4rem;
+
+    margin-bottom: 40px;
+
+    font-weight: 800;
+
+    color: white;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.08),
+        0 0 40px rgba(37,99,235,0.25);
 }
 
-/* Texto da questão */
+/* =========================================
+   TOPO
+========================================= */
+
+.topo-jogo {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+}
+
+.nivel-box,
+.acertos-box {
+
+    flex: 1;
+
+    min-width: 280px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30,41,59,0.95),
+            rgba(15,23,42,0.95)
+        );
+
+    border: 1px solid rgba(59,130,246,0.18);
+
+    border-radius: 24px;
+
+    padding: 28px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.04),
+        0 10px 25px rgba(0,0,0,0.35);
+
+    transition: 0.25s;
+}
+
+.nivel-label,
+.acertos-label {
+    display: block;
+    color: #94a3b8;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.nivel-numero {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #60a5fa;
+}
+
+.acertos-valor {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: #22c55e;
+}
+
+/* =========================================
+   CARD QUESTÃO
+========================================= */
+
+.questao-card {
+
+    position: relative;
+
+    margin-bottom: 36px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15,23,42,0.98),
+            rgba(17,24,39,0.98)
+        );
+
+    border: 2px solid #2563eb;
+
+    border-radius: 28px;
+
+    padding: 42px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 0 30px rgba(37,99,235,0.20),
+        0 0 80px rgba(37,99,235,0.12),
+        0 25px 60px rgba(0,0,0,0.50);
+}
+
+.questao-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(59,130,246,0.12),
+            transparent 40%
+        );
+
+    pointer-events: none;
+}
+
+.titulo-questao {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    background:
+        linear-gradient(to right, #2563eb, #3b82f6);
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 999px;
+
+    font-size: 0.95rem;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 30px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 0 20px rgba(37,99,235,0.35);
+}
+
 .questao {
     margin-bottom: 25px;
-    line-height: 1.7;
-    font-size: 1.1rem;
+    line-height: 1.0;       /* Aumenta o espaço entre as linhas para respirar */
+    font-size: 1.5rem;      /* Diminuiu quase imperceptivelmente (de 1.15 para 1.1) */
+    font-weight: 500;       /* Tira o negrito estourado, deixa um peso médio */
+    color: #cbd5e1;         /* Um cinza claro muito mais confortável para o modo escuro */
 }
 
-/* Formulários */
+.questao p {
+    margin: 0;
+}
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
-/* Campo de texto */
-input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    font-size: 1rem;
-}
+/* =========================================
+   ALTERNATIVAS
+========================================= */
 
-/* Botões */
-button {
-    padding: 14px;
-    border: none;
-    border-radius: 8px;
-    background-color: #2563eb;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background-color: #1d4ed8;
-}
-
-/* Alternativas */
 .alternativas {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 .alternativa {
+    display: flex;
+    align-items: center;
     background-color: #334155;
-    padding: 12px;
-    border-radius: 8px;
-    transition: 0.3s;
+    border: 1px solid #475569;
+    border-radius: 14px;
+    padding: 18px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.alternativa::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    background-color: transparent;
+    transition: 0.2s;
 }
 
 .alternativa:hover {
-    background-color: #475569;
+    background-color: #3d4f68;
+    transform: translateY(-2px);
 }
 
-/* Radio buttons */
+.alternativa:hover::before {
+    background-color: #3b82f6;
+}
+
 input[type="radio"] {
-    margin-right: 10px;
+    margin-right: 14px;
+    width: 18px;
+    height: 18px;
+    accent-color: #2563eb;
 }
 
-/* Resultado */
+/* =========================================
+   BOTÃO
+========================================= */
+
+button {
+    border: none;
+    border-radius: 14px;
+    padding: 18px;
+    background: linear-gradient(to right, #2563eb, #3b82f6);
+    color: white;
+    font-size: 1.05rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
+
+/* =========================================
+   RESULTADO
+========================================= */
+
 .resultado {
-    margin-top: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    background-color: #1e293b;
+    margin-top: 24px;
+    padding: 20px;
+    border-radius: 14px;
+    background-color: #0f172a;
     border-left: 5px solid #22c55e;
 }
 
-/* Resolução comentada */
+/* =========================================
+   RESOLUÇÃO
+========================================= */
+
 .resolucao {
-    margin-top: 15px;
+    margin-top: 22px;
     background-color: #0f172a;
-    padding: 15px;
-    border-radius: 8px;
-    line-height: 1.6;
+    border: 1px solid #334155;
+    border-radius: 14px;
+    padding: 22px;
+    line-height: 1.8;
 }
 
-/* Links */
-a {
-    color: #60a5fa;
-    text-decoration: none;
+/* =========================================
+   INPUT TEXTO
+========================================= */
+
+input[type="text"] {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    background-color: #0f172a;
+    color: white;
+    font-size: 1rem;
 }
 
-a:hover {
-    text-decoration: underline;
+input[type="text"]:focus {
+    outline: none;
+    border-color: #3b82f6;
 }
 
-/* Imagens responsivas */
-img {
-    max-width: 100%;
-    height: auto;
-}
+/* =========================================
+   RESPONSIVO
+========================================= */
 
-/* Responsividade */
 @media (max-width: 768px) {
 
-    body {
-        padding: 10px;
-    }
-
     .container {
-        width: 100%;
-        padding: 18px;
-        border-radius: 10px;
+        padding: 20px;
     }
 
     h1 {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .questao {
-        font-size: 1rem;
-    }
-
-    button {
-        width: 100%;
-        font-size: 1rem;
-    }
-
-    input[type="text"] {
-        width: 100%;
+        font-size: 1.1rem;
+        line-height: 1.8;
     }
 
     .alternativa {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        padding: 16px;
     }
+
+    .topo-jogo {
+        flex-direction: column;
+    }
+}
+
+/* =========================================
+   FORÇAR ESTILO NO ENUNCIADO
+========================================= */
+
+.questao * {
+    color: #ffffff !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    font-weight: inherit !important;
+}
+
+.questao p {
+    margin-bottom: 18px;
+}
+
+.questao img {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-top: 18px;
+}
+
+.questao strong {
+    color: #93c5fd !important;
+}
+
+.questao math,
+.questao mjx-container {
+    font-size: 1.2em !important;
 }
