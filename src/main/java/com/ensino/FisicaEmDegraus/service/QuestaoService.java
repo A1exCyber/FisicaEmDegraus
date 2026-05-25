@@ -1,6 +1,7 @@
 package com.ensino.FisicaEmDegraus.service;
 
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
@@ -30,13 +31,18 @@ public class QuestaoService {
         return questaoRepository.findById(id).orElse(null);
     }
 
-    public Questao buscarQuestaoNaoRespondida(String nomeAluno, int nivel) {
+    public Questao buscarQuestaoNaoRespondida(
+            String nomeAluno,
+            int nivel) {
 
-        List<Long> idsRespondidos = respostaAlunoRepository.findQuestoesRespondidas(nomeAluno);
+        List<Long> idsAcertados = respostaAlunoRepository
+                .findQuestoesAcertadas(
+                        nomeAluno,
+                        nivel);
 
         List<Questao> questoes;
 
-        if (idsRespondidos.isEmpty()) {
+        if (idsAcertados.isEmpty()) {
 
             questoes = questaoRepository
                     .findByNivelOrderById(nivel);
@@ -44,14 +50,18 @@ public class QuestaoService {
         } else {
 
             questoes = questaoRepository
-                    .findByNivelAndIdNotInOrderById(nivel, idsRespondidos);
+                    .findByNivelAndIdNotInOrderById(
+                            nivel,
+                            idsAcertados);
         }
 
         if (questoes.isEmpty()) {
             return null;
         }
 
-        return questoes.get(0);
-    }
+        Random random = new Random();
 
+        return questoes.get(
+                random.nextInt(questoes.size()));
+    }
 }

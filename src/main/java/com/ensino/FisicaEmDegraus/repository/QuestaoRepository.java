@@ -21,4 +21,7 @@ public interface QuestaoRepository extends JpaRepository<Questao, Long> {
     List<Questao> findByNivelAndIdNotInOrderById(
             int nivel,
             List<Long> ids);
+
+
+    
 }

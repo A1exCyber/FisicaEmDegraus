@@ -65,7 +65,24 @@ public class QuestaoController {
             Model model) {
 
         long acertosNivel = respostaAlunoRepository
-                .countByNomeAlunoAndNivelAndAcertouTrue(nomeAluno, nivel);
+                .countByNomeAlunoAndNivelAndAcertouTrue(
+                        nomeAluno,
+                        nivel);
+
+        long errosNivel = respostaAlunoRepository
+                .countByNomeAlunoAndNivelAndAcertouFalse(
+                        nomeAluno,
+                        nivel);
+
+        // GAME OVER
+        if (errosNivel >= 3) {
+
+            model.addAttribute(
+                    "mensagem",
+                    "💀 Game Over! Você excedeu o número de erros.");
+
+            return "index";
+        }
 
         // sobe de nível
         if (acertosNivel >= 5) {
@@ -73,11 +90,16 @@ public class QuestaoController {
             acertosNivel = 0;
         }
 
-        Questao proxima = questaoService.buscarQuestaoNaoRespondida(nomeAluno, nivel);
+        Questao proxima = questaoService.buscarQuestaoNaoRespondida(
+                nomeAluno,
+                nivel);
 
         if (proxima == null) {
-            model.addAttribute("mensagem",
-                    "🎮 Game Over! Não há mais questões.");
+
+            model.addAttribute(
+                    "mensagem",
+                    "🎮 Parabéns! Você concluiu todas as questões.");
+
             return "index";
         }
 
@@ -106,7 +128,12 @@ public class QuestaoController {
     }
 
     @PostMapping("/iniciar")
-    public String iniciar(@RequestParam String nomeAluno, Model model) {
+    public String iniciar(
+            @RequestParam String nomeAluno,
+            Model model) {
+
+        // limpa tentativas antigas
+        respostaAlunoRepository.deleteByNomeAluno(nomeAluno);
 
         Questao q = questaoService
                 .buscarQuestaoNaoRespondida(nomeAluno, 1);
