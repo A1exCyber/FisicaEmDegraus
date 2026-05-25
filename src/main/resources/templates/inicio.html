@@ -1,35 +1,68 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Física em Degraus</title>
 
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/inicio.css}">
 </head>
+
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h1>Física em Degraus</h1>
+        <div class="hero">
 
-    <form action="/iniciar" method="post">
+            <h1>Física em Degraus</h1>
 
-        <input 
-            type="text"
-            name="nomeAluno"
-            placeholder="Digite seu nome"
-            required
-        >
+            <p class="subtitulo">
+                Aprenda Física resolvendo desafios e evoluindo por níveis.
+            </p>
 
-        <button type="submit">
-            Começar
-        </button>
+            <div class="features">
 
-    </form>
+                <div class="feature">
+                    <div class="icon">🎯</div>
+                    <div>
+                        <h3>Progressão</h3>
+                        <p>Suba de nível conforme seus acertos.</p>
+                    </div>
+                </div>
 
-</div>
+                <div class="feature">
+                    <div class="icon">⚡</div>
+                    <div>
+                        <h3>Desafios</h3>
+                        <p>Questões interativas de Física.</p>
+                    </div>
+                </div>
 
+                <div class="feature">
+                    <div class="icon">📊</div>
+                    <div>
+                        <h3>Desempenho</h3>
+                        <p>Acompanhe sua evolução.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <form action="/iniciar" method="post">
+
+                <input type="text" name="nomeAluno" placeholder="Digite seu nome" required>
+
+                <button type="submit">
+                    Começar
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>  
 </body>
+
 </html>
