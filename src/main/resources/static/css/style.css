@@ -21,10 +21,6 @@ body {
     padding: 40px 20px;
 }
 
-/* =========================================
-   CONTAINER
-========================================= */
-
 .container {
     width: 100%;
     max-width: 1450px;
@@ -44,10 +40,6 @@ body {
         0 25px 60px rgba(0,0,0,0.55);
 }
 
-/* =========================================
-   TÍTULO
-========================================= */
-
 h1 {
     text-align: center;
 
@@ -65,10 +57,6 @@ h1 {
         0 0 20px rgba(255,255,255,0.08),
         0 0 40px rgba(37,99,235,0.25);
 }
-
-/* =========================================
-   TOPO
-========================================= */
 
 .topo-jogo {
     display: flex;
@@ -100,8 +88,6 @@ h1 {
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.04),
         0 10px 25px rgba(0,0,0,0.35);
-
-    transition: 0.25s;
 }
 
 .nivel-label,
@@ -125,10 +111,6 @@ h1 {
     font-weight: bold;
     color: #22c55e;
 }
-
-/* =========================================
-   CARD QUESTÃO
-========================================= */
 
 .questao-card {
 
@@ -157,31 +139,11 @@ h1 {
         0 25px 60px rgba(0,0,0,0.50);
 }
 
-.questao-card::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at top left,
-            rgba(59,130,246,0.12),
-            transparent 40%
-        );
-
-    pointer-events: none;
-}
-
 .titulo-questao {
 
     display: inline-flex;
 
     align-items: center;
-
-    gap: 10px;
 
     background:
         linear-gradient(to right, #2563eb, #3b82f6);
@@ -194,41 +156,24 @@ h1 {
 
     font-size: 0.95rem;
 
-    letter-spacing: 1px;
-
     margin-bottom: 30px;
 
     font-weight: 700;
-
-    box-shadow:
-        0 0 20px rgba(37,99,235,0.35);
 }
 
 .questao {
     margin-bottom: 25px;
-    line-height: 1.0;       /* Aumenta o espaço entre as linhas para respirar */
-    font-size: 1.5rem;      /* Diminuiu quase imperceptivelmente (de 1.15 para 1.1) */
-    font-weight: 500;       /* Tira o negrito estourado, deixa um peso médio */
-    color: #cbd5e1;         /* Um cinza claro muito mais confortável para o modo escuro */
+    line-height: 1.7;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #cbd5e1;
 }
-
-.questao p {
-    margin: 0;
-}
-
-/* =========================================
-   FORMULÁRIO
-========================================= */
 
 form {
     display: flex;
     flex-direction: column;
     gap: 18px;
 }
-
-/* =========================================
-   ALTERNATIVAS
-========================================= */
 
 .alternativas {
     display: flex;
@@ -246,28 +191,11 @@ form {
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.2s;
-    position: relative;
-    overflow: hidden;
-}
-
-.alternativa::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 5px;
-    height: 100%;
-    background-color: transparent;
-    transition: 0.2s;
 }
 
 .alternativa:hover {
     background-color: #3d4f68;
     transform: translateY(-2px);
-}
-
-.alternativa:hover::before {
-    background-color: #3b82f6;
 }
 
 input[type="radio"] {
@@ -276,10 +204,6 @@ input[type="radio"] {
     height: 18px;
     accent-color: #2563eb;
 }
-
-/* =========================================
-   BOTÃO
-========================================= */
 
 button {
     border: none;
@@ -298,54 +222,6 @@ button:hover {
     filter: brightness(1.08);
 }
 
-/* =========================================
-   RESULTADO
-========================================= */
-
-.resultado {
-    margin-top: 24px;
-    padding: 20px;
-    border-radius: 14px;
-    background-color: #0f172a;
-    border-left: 5px solid #22c55e;
-}
-
-/* =========================================
-   RESOLUÇÃO
-========================================= */
-
-.resolucao {
-    margin-top: 22px;
-    background-color: #0f172a;
-    border: 1px solid #334155;
-    border-radius: 14px;
-    padding: 22px;
-    line-height: 1.8;
-}
-
-/* =========================================
-   INPUT TEXTO
-========================================= */
-
-input[type="text"] {
-    width: 100%;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #334155;
-    background-color: #0f172a;
-    color: white;
-    font-size: 1rem;
-}
-
-input[type="text"]:focus {
-    outline: none;
-    border-color: #3b82f6;
-}
-
-/* =========================================
-   RESPONSIVO
-========================================= */
-
 @media (max-width: 768px) {
 
     .container {
@@ -358,7 +234,6 @@ input[type="text"]:focus {
 
     .questao {
         font-size: 1.1rem;
-        line-height: 1.8;
     }
 
     .alternativa {
@@ -369,124 +244,4 @@ input[type="text"]:focus {
     .topo-jogo {
         flex-direction: column;
     }
-}
-
-/* =========================================
-   FORÇAR ESTILO NO ENUNCIADO
-========================================= */
-
-.questao * {
-    color: #ffffff !important;
-    font-size: inherit !important;
-    line-height: inherit !important;
-    font-weight: inherit !important;
-}
-
-.questao p {
-    margin-bottom: 18px;
-}
-
-.questao img {
-    max-width: 100%;
-    border-radius: 12px;
-    margin-top: 18px;
-}
-
-.questao strong {
-    color: #93c5fd !important;
-}
-
-.questao math,
-.questao mjx-container {
-    font-size: 1.2em !important;
-}
-
-.container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
-.hero {
-    width: 100%;
-    max-width: 850px;
-    background: rgba(8, 15, 40, 0.9);
-    border-radius: 25px;
-    padding: 50px;
-    box-shadow: 0 0 30px rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.08);
-}
-
-.hero h1 {
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.subtitulo {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #cbd5e1;
-    line-height: 1.7;
-    margin-bottom: 40px;
-}
-
-.cards {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 40px;
-}
-
-.card {
-    flex: 1;
-    background: rgba(255,255,255,0.05);
-    border-radius: 18px;
-    padding: 25px;
-    text-align: center;
-}
-
-.card span {
-    font-size: 2rem;
-}
-
-.card h3 {
-    margin: 15px 0;
-}
-
-.card p {
-    color: #cbd5e1;
-    line-height: 1.5;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-input {
-    padding: 18px;
-    border-radius: 12px;
-    border: 1px solid #3b82f6;
-    background: #071028;
-    color: white;
-    font-size: 1rem;
-}
-
-button {
-    padding: 18px;
-    border: none;
-    border-radius: 12px;
-    background: linear-gradient(90deg, #2563eb, #3b82f6);
-    color: white;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: translateY(-2px);
 }
