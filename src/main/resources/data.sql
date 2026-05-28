@@ -153,10 +153,10 @@ VALUES
 
 'CINEMATICA',
 
-'Primeiro calcule as distâncias percorridas nos dois trajetos, lembrando de converter o tempo para horas. Depois utilize a fórmula da velocidade média: v_{média} = \\frac{\\Delta S}{\\Delta t}.',
+'Primeiro calcule as distâncias percorridas nos dois trajetos. Depois utilize a fórmula da velocidade média.',
 
 2
-),
+);
 
 (
 'Um carro percorre $240 \, m$ com velocidade constante de $20 \, m/s$. Quanto tempo ele levou?',
