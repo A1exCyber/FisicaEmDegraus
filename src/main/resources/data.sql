@@ -140,6 +140,23 @@ VALUES
 -- =========================
 -- NÍVEL 2
 -- =========================
+(
+'UTFPR - Um automóvel se desloca durante 30 min a 100 km/h e depois 10 min a 60 km/h. Qual foi sua velocidade média neste percurso?',
+
+'90 km/h',
+'80 km/h',
+'106 km/h',
+'110 km/h',
+'120 km/h',
+
+'A',
+
+'CINEMATICA',
+
+'Primeiro calcule as distâncias percorridas nos dois trajetos, lembrando de converter o tempo para horas. Depois utilize a fórmula da velocidade média: v_{média} = \\frac{\\Delta S}{\\Delta t}.',
+
+2
+),
 
 (
 'Um carro percorre $240 \, m$ com velocidade constante de $20 \, m/s$. Quanto tempo ele levou?',
