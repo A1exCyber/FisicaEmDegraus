@@ -156,7 +156,7 @@ VALUES
 'Primeiro calcule as distâncias percorridas nos dois trajetos. Depois utilize a fórmula da velocidade média.',
 
 2
-);
+),
 
 (
 'Um carro percorre $240 \, m$ com velocidade constante de $20 \, m/s$. Quanto tempo ele levou?',
